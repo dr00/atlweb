@@ -1,4 +1,14 @@
 Atlweb::Application.routes.draw do
+  resources :users
+
+  resources :jobs
+
+  resources :resources
+
+  resources :results
+
+  resources :nodes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
