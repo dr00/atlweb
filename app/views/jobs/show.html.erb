@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @job.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @job.description %>
+</p>
+
+<p>
+  <b>Connector:</b>
+  <%= @job.connector %>
+</p>
+
+<p>
+  <b>Results:</b>
+  <%= @job.results %>
+</p>
+
+<p>
+  <b>Nodes:</b>
+  <%= @job.nodes %>
+</p>
+
+<p>
+  <b>Create date:</b>
+  <%= @job.create_date %>
+</p>
+
+<p>
+  <b>Last run date:</b>
+  <%= @job.last_run_date %>
+</p>
+
+<p>
+  <b>Program:</b>
+  <%= @job.program %>
+</p>
+
+<p>
+  <b>Args:</b>
+  <%= @job.args %>
+</p>
+
+<p>
+  <b>File map:</b>
+  <%= @job.file_map %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

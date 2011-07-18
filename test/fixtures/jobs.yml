@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  connector: 
+  results: 
+  nodes: 
+  create_date: 2011-07-18
+  last_run_date: 2011-07-18
+  program: MyString
+  args: MyString
+  file_map: MyString
+
+two:
+  name: MyString
+  description: MyString
+  connector: 
+  results: 
+  nodes: 
+  create_date: 2011-07-18
+  last_run_date: 2011-07-18
+  program: MyString
+  args: MyString
+  file_map: MyString

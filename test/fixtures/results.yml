@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  create_date: 2011-07-18
+  file_path: MyString
+  outcome: 
+
+two:
+  create_date: 2011-07-18
+  file_path: MyString
+  outcome: 

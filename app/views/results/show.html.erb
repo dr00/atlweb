@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Create date:</b>
+  <%= @result.create_date %>
+</p>
+
+<p>
+  <b>File path:</b>
+  <%= @result.file_path %>
+</p>
+
+<p>
+  <b>Outcome:</b>
+  <%= @result.outcome %>
+</p>
+
+
+<%= link_to 'Edit', edit_result_path(@result) %> |
+<%= link_to 'Back', results_path %>

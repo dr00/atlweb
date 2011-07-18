@@ -1,0 +1,33 @@
+<h1>Listing resources</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>File map</th>
+    <th>Num cpus</th>
+    <th>Memory req</th>
+    <th>Diskspace req</th>
+    <th>Bandwidth req</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @resources.each do |resource| %>
+  <tr>
+    <td><%= resource.name %></td>
+    <td><%= resource.file_map %></td>
+    <td><%= resource.num_CPUs %></td>
+    <td><%= resource.memory_req %></td>
+    <td><%= resource.diskspace_req %></td>
+    <td><%= resource.bandwidth_req %></td>
+    <td><%= link_to 'Show', resource %></td>
+    <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
+    <td><%= link_to 'Destroy', resource, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Resource', new_resource_path %>

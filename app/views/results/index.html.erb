@@ -1,0 +1,27 @@
+<h1>Listing results</h1>
+
+<table>
+  <tr>
+    <th>Create date</th>
+    <th>File path</th>
+    <th>Outcome</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @results.each do |result| %>
+  <tr>
+    <td><%= result.create_date %></td>
+    <td><%= result.file_path %></td>
+    <td><%= result.outcome %></td>
+    <td><%= link_to 'Show', result %></td>
+    <td><%= link_to 'Edit', edit_result_path(result) %></td>
+    <td><%= link_to 'Destroy', result, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Result', new_result_path %>
