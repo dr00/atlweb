@@ -7,6 +7,7 @@ gem 'rails', '3.0.9'
 
 platforms :ruby do
   gem 'sqlite3'
+  gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
 platforms :jruby do
@@ -21,16 +22,15 @@ platforms :jruby do
 
   # SQLite JDBC adapter
   # gem 'jdbc-sqlite3', :require => false
-  if defined?(JRUBY_VERSION)
+  #if defined?(JRUBY_VERSION)
     gem 'jdbc-sqlite3'
     gem 'activerecord-jdbc-adapter'
     gem 'activerecord-jdbcsqlite3-adapter'
     gem 'jruby-openssl'
     gem 'jruby-rack'
     gem 'warbler'
-  else
-    gem 'sqlite3-ruby', :require => 'sqlite3'
-  end
+  #else
+  #end
 
   # Derby JDBC adapter
   #gem 'activerecord-jdbcderby-adapter'
@@ -46,6 +46,14 @@ platforms :jruby do
 
 end
 
+group :development do
+  gem 'rspec-rails', '2.6.1'
+end
+
+group :test do
+  gem 'rspec-rails', '2.6.1'
+  gem 'webrat', '0.7.1'
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

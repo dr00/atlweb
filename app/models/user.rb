@@ -1,3 +1,6 @@
 class User < ActiveRecord::Base
-  belongs_to :jobs
+  
+  validates :user_name, :presence => true, :uniqueness => true
+  validates :last_name, :presence => true
+  validates :first_nane, :presence => true
 end

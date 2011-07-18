@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718170051) do
+ActiveRecord::Schema.define(:version => 20110718184219) do
+
+  create_table "job_nodes", :force => true do |t|
+    t.integer  "job_id",     :null => false
+    t.integer  "node_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "jobs", :force => true do |t|
     t.string   "name",                                           :null => false
@@ -29,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20110718170051) do
   end
 
   create_table "nodes", :force => true do |t|
-    t.string   "name"
-    t.string   "ipaddress"
+    t.string   "name",       :null => false
+    t.string   "ipaddress",  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,4 +1,5 @@
 Atlweb::Application.routes.draw do
+  root :to => "Jobs#index"
   resources :users
 
   resources :jobs

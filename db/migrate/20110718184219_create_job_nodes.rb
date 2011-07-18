@@ -1,6 +1,6 @@
 class CreateJobNodes < ActiveRecord::Migration
   def self.up
-    create_table :jobnodes do |t|
+    create_table :job_nodes do |t|
       t.references :job, :null => false
       t.references :node, :null => false 
       t.timestamps
@@ -8,6 +8,6 @@ class CreateJobNodes < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :jobnodes
+    drop_table :job_nodes
   end
 end
