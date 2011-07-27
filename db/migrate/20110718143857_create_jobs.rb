@@ -6,12 +6,13 @@ class CreateJobs < ActiveRecord::Migration
       t.string :sensor_server, :default => 'hercules'
       t.string :gui_url, :default => 'www.dslab.uwb.edu'
       t.string :sensor_map
-      t.references :result
       t.references :user
+      t.references :resource
       t.datetime :last_run_date
       t.string :program, :null => false
       t.string :args
       t.string :file_map
+      t.string :last_outcome
 
       t.timestamps
     end

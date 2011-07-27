@@ -1,14 +1,31 @@
 Atlweb::Application.routes.draw do
-  root :to => "Jobs#index"
+  get "pages/home"
+
+  get "pages/contact"
+
+  get "pages/help"
+
+  get "users/new"
+  get "jobs/new"
+
+  match "/signout", :to => "sessions#destroy"
+  match "/signin", :to => "sessions#new"
+  match "/signup", :to => "users#new"
+  match "/home", :to => "pages#home"
+  match "/about", :to => "pages#about"
+  match "/contact", :to => "pages#contact"
+  match "/help", :to => "pages#help"
+
+  #root :to => "sessions#new"
+  root :to => "pages#home" 
+  
+  resources :sessions, :only => [:new, :create, :destroy]
+  resources :machines
   resources :users
-
   resources :jobs
-
   resources :resources
-
   resources :results
-
-  resources :nodes
+  resources :machines
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

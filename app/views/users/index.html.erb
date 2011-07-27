@@ -3,10 +3,9 @@
 <table>
   <tr>
     <th>User name</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Is admin</th>
-    <th>Jobs</th>
+    <th>Email</th>
+    <th>Name</th>
+    <th>Is admin?</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,10 +14,9 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.user_name %></td>
-    <td><%= user.first_name %></td>
-    <td><%= user.last_name %></td>
-    <td><%= user.is_admin %></td>
-    <td><%= user.jobs %></td>
+    <td><%= user.email %></td>
+    <td><%= user.name %></td>
+    <td><%= user.admin %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>
     <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>

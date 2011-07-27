@@ -3,7 +3,7 @@ class CreateResults < ActiveRecord::Migration
     create_table :results do |t|
       t.string :file_path
       t.text :description
-      t.integer :outcome, :null => false
+      t.string :outcome, :null => false
       t.references :job, :null => false
       t.timestamps
     end

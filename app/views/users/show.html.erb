@@ -6,25 +6,19 @@
 </p>
 
 <p>
-  <b>First name:</b>
-  <%= @user.first_name %>
+  <b>Email:</b>
+  <%= @user.email %>
 </p>
 
 <p>
-  <b>Last name:</b>
-  <%= @user.last_name %>
+  <b>Name:</b>
+  <%= @user.name %>
 </p>
 
 <p>
   <b>Is admin:</b>
-  <%= @user.is_admin %>
+  <%= @user.admin %>
 </p>
-
-<p>
-  <b>Jobs:</b>
-  <%= @user.jobs %>
-</p>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

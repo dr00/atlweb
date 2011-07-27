@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.xml
   def index
-    @jobs = Job.all
+    @jobs = Job.where(:user_id => params[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb

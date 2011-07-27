@@ -4,9 +4,6 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>Connector</th>
-    <th>Results</th>
-    <th>Nodes</th>
     <th>Create date</th>
     <th>Last run date</th>
     <th>Program</th>
@@ -21,10 +18,7 @@
   <tr>
     <td><%= job.name %></td>
     <td><%= job.description %></td>
-    <td><%= job.connector %></td>
-    <td><%= job.results %></td>
-    <td><%= job.nodes %></td>
-    <td><%= job.create_date %></td>
+    <td><%= job.created_at %></td>
     <td><%= job.last_run_date %></td>
     <td><%= job.program %></td>
     <td><%= job.args %></td>

@@ -10,9 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718184219) do
+ActiveRecord::Schema.define(:version => 20110726063336) do
 
-  create_table "job_nodes", :force => true do |t|
+  create_table "job_machines", :force => true do |t|
     t.integer  "job_id",     :null => false
     t.integer  "node_id",    :null => false
     t.datetime "created_at"
@@ -35,9 +35,10 @@ ActiveRecord::Schema.define(:version => 20110718184219) do
     t.datetime "updated_at"
   end
 
-  create_table "nodes", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "ipaddress",  :null => false
+  create_table "machines", :force => true do |t|
+    t.string   "name"
+    t.string   "ipaddress"
+    t.boolean  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,17 +57,19 @@ ActiveRecord::Schema.define(:version => 20110718184219) do
   create_table "results", :force => true do |t|
     t.string   "file_path"
     t.text     "description"
-    t.integer  "outcome",     :null => false
+    t.string   "outcome",     :null => false
     t.integer  "job_id",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "user_name",  :null => false
-    t.string   "first_name", :null => false
-    t.string   "last_name",  :null => false
-    t.boolean  "is_admin",   :null => false
+    t.string   "user_name",                        :null => false
+    t.string   "name",                             :null => false
+    t.string   "email",                            :null => false
+    t.boolean  "admin",         :default => false, :null => false
+    t.string   "password_hash"
+    t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
