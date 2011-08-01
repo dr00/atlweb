@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
-  # GET /jobs
-  # GET /jobs.xml
+  before_filter :authenticate, :only [:create, :destroy, :update]
+  before_filter :authorized_user, :only => :destroy
+
   def index
     @jobs = Job.all
 
@@ -10,8 +11,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /jobs/1
-  # GET /jobs/1.xml
   def show
     @job = Job.find(params[:id])
 
@@ -21,8 +20,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /jobs/new
-  # GET /jobs/new.xml
   def new
     @job = Job.new
 
@@ -32,29 +29,22 @@ class JobsController < ApplicationController
     end
   end
 
-  # GET /jobs/1/edit
   def edit
     @job = Job.find(params[:id])
   end
 
-  # POST /jobs
-  # POST /jobs.xml
   def create
-    @job = Job.new(params[:job])
+    @job = current_user.jobs.build(params[:job])
 
-    respond_to do |format|
       if @job.save
-        format.html { redirect_to(@job, :notice => 'Job was successfully created.') }
-        format.xml  { render :xml => @job, :status => :created, :location => @job }
+        flash[:success] = "Job created!"
+        redirect_to root_path
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @job.errors, :status => :unprocessable_entity }
+        render 'pages/home'
       end
     end
   end
 
-  # PUT /jobs/1
-  # PUT /jobs/1.xml
   def update
     @job = Job.find(params[:id])
 
@@ -69,15 +59,15 @@ class JobsController < ApplicationController
     end
   end
 
-  # DELETE /jobs/1
-  # DELETE /jobs/1.xml
   def destroy
-    @job = Job.find(params[:id])
     @job.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(jobs_url) }
-      format.xml  { head :ok }
-    end
+    redirect_back_or root_path
+  end
+  
+  private
+  
+  def authroized_user
+    @job = current_user.jobs.find_by_id(params[:id])
+    redirect_to root_path if @jobs.nil?
   end
 end

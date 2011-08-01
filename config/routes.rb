@@ -9,12 +9,12 @@ Atlweb::Application.routes.draw do
   get "jobs/new"
 
   match "/signout", :to => "sessions#destroy"
-  match "/signin", :to => "sessions#new"
-  match "/signup", :to => "users#new"
-  match "/home", :to => "pages#home"
-  match "/about", :to => "pages#about"
+  match "/signin",  :to => "sessions#new"
+  match "/signup",  :to => "users#new"
+  match "/home",    :to => "pages#home"
+  match "/about",   :to => "pages#about"
   match "/contact", :to => "pages#contact"
-  match "/help", :to => "pages#help"
+  match "/help",    :to => "pages#help"
 
   #root :to => "sessions#new"
   root :to => "pages#home" 

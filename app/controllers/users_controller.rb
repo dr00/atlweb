@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :only => [:index, :edit, :update]
   before_filter :correct_user, :only => [:edit, :update]
+  before_filter :admin_user,   :only => :destroy
   
   def index
     @title = "All users"
-    @users = User.all
+    @users = User.paginate(:page => params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    @jobs = @user.jobs.paginate(:page => params[:page])
     @title = @user.user_name
   end
 
@@ -50,20 +52,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.xml  { head :ok }
-    end
+    User.find(params[:id]).destroy
+    flash[:success] = "User destoryed."
+    redirect_to users_path
   end
 
 private
-
-  def authenticate
-    deny_access unless signed_in?
-  end
   
   def correct_user
     @user = User.find(params[:id])

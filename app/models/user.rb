@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   attr_accessor :password
   attr_accessible :user_name, :password, :password_confirmation, :name, :email
 
+  # detroy any jobs this user owns, if the user is destroyed
+  has_many :jobs, :dependent => :destroy
+
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   
   validates :user_name, :presence => true,
