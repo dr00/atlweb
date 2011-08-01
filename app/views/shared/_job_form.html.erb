@@ -1,0 +1,38 @@
+<%= form_for(@job) do |f| %>
+  <% render 'shared/error_messages', :object => f.object %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :program %><br />
+    <%= f.text_field :program %>
+  </div>
+  <div class="field">
+    <%= f.label :args %><br />
+    <%= f.text_field :args %>
+  </div>
+  <div class="field">
+    <%= f.label :file_map %><br />
+    <%= f.text_field :file_map %>
+  </div>
+  <div class="field">
+    <%= f.label :sensor_server %><br />
+    <%= f.text_field :sensor_server %>
+  </div>
+  <div class="field">
+    <%= f.label :sensor_map %><br />
+    <%= f.text_field :sensor_map %>
+  </div>
+  <div class="field">
+    <%= f.label :gui_url %><br />
+    <%= f.text_field :gui_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>User name:</b>
-  <%= @user.user_name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Is admin:</b>
-  <%= @user.admin %>
-</p>
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @user.user_name %>
+      </h1>
+      <% unless @user.jobs.empty? %>
+        <table class = "jobs" summary="User Jobs">
+          <%= render @jobs %>
+        </table>
+        <%= will_paginate @jobs %>
+      <% end %>
+    </td>
+    <td class = "sidebar round">
+      <strong>Name</strong> <%= @user.user_name %><br />
+      <strong>URL</strong> <%= link_to user_path(@user), @user %>
+      <strong>Jobs</strong> <%= @user.jobs.count %>
+    </td>
+  </tr>
+</table
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -1,5 +1,19 @@
-<h1>Welcome to Agent Teamwork Lite!</h1>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="jobs">New Job</h1>
+        <%= render 'shared/job_form' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1>Welcome to Agent Teamwork Lite!</h1>
   <p>This is the home page for the
-    <a href="http://depts.washington.edu/dslab/AgentTeamwork/index.html">AgentTeamwork</a> web app.</p>
-<p>New user? <%= link_to "Sign up!", signup_path %></p>
-
+    <a href="http://depts.washington.edu/dslab/AgentTeamwork/index.html">AgentTeamwork</a> web app.
+  </p>
+  <p>New user? <%= link_to "Sign up!", signup_path %></p>
+<% end %>

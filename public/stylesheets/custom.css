@@ -151,3 +151,85 @@ footer nav {
   font-size: 12px;
   list-style: square;
 }
+
+/* user show page */
+table.profile {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+td.main {
+  width: 70%;
+  padding: 1em;
+}
+
+td.sidebar {
+  width: 30%
+  padding: 1em;
+  vertical-align: top;
+  background: #ffc;
+}
+
+ul.users {
+  margin-top: 1em;
+}
+
+.users li {
+  list-style: none;
+}
+
+/* Jobs */
+h1.job {
+  margin-bottom: 0.3em;
+}
+
+table.jobs {
+  margin-top: 1em;
+}
+
+table.jobs tr {
+  height: 70px;
+}
+
+table.jobs tr td.job {
+  border-top: 1px solid #ccc;
+  vertical-align: top;
+  padding-top: 10px;
+}
+
+table.jobs tr td.job span.lastrun {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+table.jobs tr td.job span.outcome {
+  display: block;
+  font-size: 85%;
+  color: #666;
+}
+
+div.user_info img {
+  padding-right: 0.1em;
+}
+
+div.user_info a {
+  text-decoration: none;
+}
+
+div.user_info span.user_name {
+  position: absolute;
+}
+
+div.user_info span.jobs {
+  font-size: 80%;
+}
+
+form.new_job {
+  margin-bottom: 2em;
+}
+
+form.new_job textarea {
+  height: 4em;
+  margin-bottom: 0;
+}
