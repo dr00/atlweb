@@ -31,6 +31,6 @@ class Job < ActiveRecord::Base
   validates :sensor_map, :presence => true
   validates :sensor_server, :presence => true
 
-  default_scope :order => 'job.last_run_at DESC'
+  default_scope :order => 'jobs.last_run_at DESC'
 
 end

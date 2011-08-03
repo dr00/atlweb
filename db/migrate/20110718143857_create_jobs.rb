@@ -17,8 +17,9 @@ class CreateJobs < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :user_id
-    add_index :last_run_at
+    add_index :jobs, :user_id
+    add_index :jobs, :created_at
+    add_index :jobs, :last_run_at
   end
 
   def self.down

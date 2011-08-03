@@ -1,0 +1,24 @@
+<tr>
+  <td class="job">
+    <span class="jobname"><%= job.name %></span>
+  </td>
+  <td class="job">
+    <span class="lastrun">
+      Last Run <%= time_ago_in_words(job.last_run_at) %> ago.
+    </span>
+  </td>
+  <td class="job">
+    <span class="outcome">
+      Last Outcome <%= job.last_outcome %>.
+    </span>
+  </td>
+  <td class="job">
+  <% user = job.user rescue User.find(job.user_id) %> 
+  <% if current_user?(job.user) %>
+  <td>
+    <%= link_to "delete", job, :method => :delete
+                               :confirm => "You sure?"
+                               :title => job.name %>
+  </td>
+  <% end %>
+</tr>

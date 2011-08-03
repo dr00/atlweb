@@ -25,15 +25,20 @@ ActiveRecord::Schema.define(:version => 20110726063336) do
     t.string   "sensor_server", :default => "hercules"
     t.string   "gui_url",       :default => "www.dslab.uwb.edu"
     t.string   "sensor_map"
-    t.integer  "result_id"
-    t.integer  "user_id"
-    t.datetime "last_run_date"
+    t.datetime "last_run_at"
     t.string   "program",                                        :null => false
     t.string   "args"
     t.string   "file_map"
+    t.string   "last_outcome"
+    t.integer  "user_id"
+    t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "jobs", ["created_at"], :name => "index_jobs_on_created_at"
+  add_index "jobs", ["last_run_at"], :name => "index_jobs_on_last_run_at"
+  add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
 
   create_table "machines", :force => true do |t|
     t.string   "name"
