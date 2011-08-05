@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @jobs = @user.jobs.paginate(:page => params[:page])
-    @title = @user.user_name
+    @title = "#{@user.user_name}'s Jobs"
   end
 
   def new
@@ -53,12 +53,16 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destoryed."
+    flash[:success] = "User destroyed."
     redirect_to users_path
   end
 
 private
   
+  def admin_user
+    redirect_to(root_path) unless current_user.admin?
+  end
+
   def correct_user
     @user = User.find(params[:id])
     redirect_to(root_path) unless current_user?(@user)

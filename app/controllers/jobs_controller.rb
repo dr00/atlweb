@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :authenticate, :only [:create, :destroy, :update]
+  before_filter :authenticate, :only => [:create, :destroy, :update]
   before_filter :authorized_user, :only => :destroy
 
   def index
@@ -42,7 +42,6 @@ class JobsController < ApplicationController
       else
         render 'pages/home'
       end
-    end
   end
 
   def update

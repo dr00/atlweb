@@ -4,7 +4,7 @@
   </td>
   <td class="job">
     <span class="lastrun">
-      Last Run <%= time_ago_in_words(job.last_run_at) %> ago.
+      Last Run <%= time_ago_in_words(job.last_run_at) unless job.last_run_at.nil? %> ago.
     </span>
   </td>
   <td class="job">
@@ -15,9 +15,13 @@
   <td class="job">
   <% user = job.user rescue User.find(job.user_id) %> 
   <% if current_user?(job.user) %>
-  <td>
-    <%= link_to "delete", job, :method => :delete
-                               :confirm => "You sure?"
+  <td class="job">
+    <%= link_to "edit", job,   :method => :edit, 
+                               :title => job.name %>
+  </td>
+  <td class="job">
+    <%= link_to "delete", job, :method => :delete, 
+                               :confirm => "You sure?", 
                                :title => job.name %>
   </td>
   <% end %>

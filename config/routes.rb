@@ -1,12 +1,11 @@
 Atlweb::Application.routes.draw do
   get "pages/home"
-
   get "pages/contact"
-
   get "pages/help"
 
-  get "users/new"
-  get "jobs/new"
+  #get "users/new"
+  
+  #get "jobs/new"
 
   match "/signout", :to => "sessions#destroy"
   match "/signin",  :to => "sessions#new"

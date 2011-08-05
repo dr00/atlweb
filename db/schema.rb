@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110726063336) do
 
-  create_table "job_machines", :force => true do |t|
-    t.integer  "job_id",     :null => false
-    t.integer  "node_id",    :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "jobs", :force => true do |t|
     t.string   "name",                                           :null => false
     t.text     "description"

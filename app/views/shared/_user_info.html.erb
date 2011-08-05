@@ -2,9 +2,9 @@
   <a href="<%= user_path(current_user) %>">
     <span class="user_name">
       <%= current_user.user_name %>
-    </span>
+    </span><br />
     <span class="jobs">
       <%= pluralize(current_user.jobs.count, "jobs") %>
-    </span>
+    </span><br />
   </a>
 </div>

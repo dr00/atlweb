@@ -4,10 +4,6 @@ class SessionsController < ApplicationController
   end
   
 
-  def authenticate
-    deny_access unless signed_in?
-  end
-
   def deny_access
     store_location
     redirect_to signing_path, :notice => "Please sign in to access this page."
@@ -16,6 +12,8 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:user_name], 
                              params[:password])
+    jobs = user.jobs
+
     if user
       sign_in user
       redirect_back_or user #TODO:This should redirect to the users jobs
