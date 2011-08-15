@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :authenticate, :only => [:index, :edit, :update]
+  before_filter :authenticate, :only => [:index, :show]
   before_filter :correct_user, :only => [:edit, :update]
   before_filter :admin_user,   :only => :destroy
-  
+
   def index
     @title = "All users"
     @users = User.paginate(:page => params[:page])
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @jobs = @user.jobs.paginate(:page => params[:page])
-    @title = "#{@user.user_name}'s Jobs"
+    @title = "#{@user.username}'s Jobs"
   end
 
   def new
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.home_dir = "Users/#{params[:id]}"
 
     if @user.save
       sign_in @user
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
   end
 
 private
-  
+
   def admin_user
     redirect_to(root_path) unless current_user.admin?
   end

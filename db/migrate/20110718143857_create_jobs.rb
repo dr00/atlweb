@@ -3,23 +3,20 @@ class CreateJobs < ActiveRecord::Migration
     create_table :jobs do |t|
       t.string :name, :null => false
       t.text :description
+      t.string :command, :null => false
+      t.string :args
+      t.string :program_path, :null => false
+      t.string :file_map, :null => false
+      t.string :sensor_map, :null => false
       t.string :sensor_server, :default => 'hercules'
       t.string :gui_url, :default => 'www.dslab.uwb.edu'
-      t.string :sensor_map
-      t.datetime :last_run_at
-      t.string :program, :null => false
-      t.string :args
-      t.string :file_map
-      t.string :last_outcome
       t.references :user
-      t.references :resource
 
       t.timestamps
     end
 
     add_index :jobs, :user_id
     add_index :jobs, :created_at
-    add_index :jobs, :last_run_at
   end
 
   def self.down

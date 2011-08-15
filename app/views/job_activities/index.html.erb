@@ -1,0 +1,21 @@
+<h1>Listing job_activities</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @job_activities.each do |job_activity| %>
+  <tr>
+    <td><%= link_to 'Show', job_activity %></td>
+    <td><%= link_to 'Edit', edit_job_activity_path(job_activity) %></td>
+    <td><%= link_to 'Destroy', job_activity, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Job activity', new_job_activity_path %>

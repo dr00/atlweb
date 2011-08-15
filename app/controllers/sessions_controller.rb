@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def new
     @title = "Sign in"
   end
-  
+
 
   def deny_access
     store_location
@@ -10,20 +10,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:user_name], 
+    user = User.authenticate(params[:user_name],
                              params[:password])
-    jobs = user.jobs
 
     if user
       sign_in user
-      redirect_back_or user #TODO:This should redirect to the users jobs
+      redirect_back_or user
     else
       @title = "Sign in"
       flash.now[:error] = "Invalid user name or password"
       render 'new'
     end
   end
-  
+
   def destroy
     sign_out
     redirect_to root_url, :notice => "Logged out!"

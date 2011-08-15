@@ -3,10 +3,11 @@ class CreateResources < ActiveRecord::Migration
     create_table :resources do |t|
       t.string :name, :null => false
       t.text :description
-      t.integer :num_CPUs, :null => false
-      t.integer :memory_req, :null => false
-      t.integer :diskspace_req, :null => false
-      t.integer :bandwidth_req, :null => false
+      t.boolean :predefined, :default => false
+      t.integer :cpus, :null => false
+      t.integer :memory, :null => false
+      t.integer :disk, :null => false
+      t.integer :network, :null => false
 
       t.timestamps
     end

@@ -1,10 +1,12 @@
 Atlweb::Application.routes.draw do
+  resources :dogs
+
   get "pages/home"
   get "pages/contact"
   get "pages/help"
 
   #get "users/new"
-  
+
   #get "jobs/new"
 
   match "/signout", :to => "sessions#destroy"
@@ -14,10 +16,11 @@ Atlweb::Application.routes.draw do
   match "/about",   :to => "pages#about"
   match "/contact", :to => "pages#contact"
   match "/help",    :to => "pages#help"
+	get "jobs/run"
 
   #root :to => "sessions#new"
-  root :to => "pages#home" 
-  
+  root :to => "pages#home"
+
   resources :sessions, :only => [:new, :create, :destroy]
   resources :machines
   resources :users

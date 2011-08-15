@@ -10,61 +10,60 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726063336) do
+ActiveRecord::Schema.define(:version => 20110810073414) do
 
-  create_table "jobs", :force => true do |t|
-    t.string   "name",                                           :null => false
-    t.text     "description"
-    t.string   "sensor_server", :default => "hercules"
-    t.string   "gui_url",       :default => "www.dslab.uwb.edu"
-    t.string   "sensor_map"
-    t.datetime "last_run_at"
-    t.string   "program",                                        :null => false
-    t.string   "args"
-    t.string   "file_map"
-    t.string   "last_outcome"
+  create_table "job_activities", :force => true do |t|
+    t.string   "outcome"
+    t.string   "machines",    :default => "n/a"
+    t.string   "job_guid"
+    t.string   "result"
     t.integer  "user_id"
+    t.integer  "job_id"
     t.integer  "resource_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "job_activities", ["created_at"], :name => "index_job_activities_on_created_at"
+  add_index "job_activities", ["job_id"], :name => "index_job_activities_on_job_id"
+  add_index "job_activities", ["updated_at"], :name => "index_job_activities_on_updated_at"
+  add_index "job_activities", ["user_id"], :name => "index_job_activities_on_user_id"
+
+  create_table "jobs", :force => true do |t|
+    t.string   "name",                                           :null => false
+    t.text     "description"
+    t.string   "command",                                        :null => false
+    t.string   "args"
+    t.string   "program_path",                                   :null => false
+    t.string   "file_map",                                       :null => false
+    t.string   "sensor_map",                                     :null => false
+    t.string   "sensor_server", :default => "hercules"
+    t.string   "gui_url",       :default => "www.dslab.uwb.edu"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   add_index "jobs", ["created_at"], :name => "index_jobs_on_created_at"
-  add_index "jobs", ["last_run_at"], :name => "index_jobs_on_last_run_at"
   add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
 
-  create_table "machines", :force => true do |t|
-    t.string   "name"
-    t.string   "ipaddress"
-    t.boolean  "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "resources", :force => true do |t|
-    t.string   "name",          :null => false
+    t.string   "name",                           :null => false
     t.text     "description"
-    t.integer  "num_CPUs",      :null => false
-    t.integer  "memory_req",    :null => false
-    t.integer  "diskspace_req", :null => false
-    t.integer  "bandwidth_req", :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "results", :force => true do |t|
-    t.string   "file_path"
-    t.text     "description"
-    t.string   "outcome",     :null => false
-    t.integer  "job_id",      :null => false
+    t.boolean  "predefined",  :default => false
+    t.integer  "cpus",                           :null => false
+    t.integer  "memory",                         :null => false
+    t.integer  "disk",                           :null => false
+    t.integer  "network",                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "user_name",                        :null => false
+    t.string   "username",                         :null => false
     t.string   "name",                             :null => false
     t.string   "email",                            :null => false
+    t.string   "home_dir",                         :null => false
     t.boolean  "admin",         :default => false
     t.string   "password_hash"
     t.string   "salt"

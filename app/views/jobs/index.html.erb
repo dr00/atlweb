@@ -5,7 +5,6 @@
     <th>Name</th>
     <th>Description</th>
     <th>Create date</th>
-    <th>Last run at</th>
     <th>Program</th>
     <th>Args</th>
     <th>File map</th>
@@ -19,17 +18,19 @@
     <td><%= job.name %></td>
     <td><%= job.description %></td>
     <td><%= job.created_at %></td>
-    <td><%= job.last_run_at %></td>
     <td><%= job.program %></td>
     <td><%= job.args %></td>
     <td><%= job.file_map %></td>
     <td><%= link_to 'Show', job %></td>
+    <% user = job.user rescue User.find(job.user_id) %>
+    <% if current_user?(job.user) or current_user.admin? %>
     <td><%= link_to 'Edit', edit_job_path(job) %></td>
     <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Job', new_job_path %>
+<%= link_to 'Create New Job', new_job_path %>

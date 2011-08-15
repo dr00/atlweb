@@ -11,13 +11,8 @@
 </p>
 
 <p>
-  <b>Last run at:</b>
-  <%= @job.last_run_at %>
-</p>
-
-<p>
   <b>Program:</b>
-  <%= @job.program %>
+  <%= @job.command %>
 </p>
 
 <p>
@@ -29,7 +24,3 @@
   <b>File map:</b>
   <%= @job.file_map %>
 </p>
-
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>

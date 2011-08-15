@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
-    @job = Job.new if signed_in?
+    redirect_to current_user unless current_user.nil?
   end
 
   def contact
@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   def help
   end
-  
+
   def about
   end
 end

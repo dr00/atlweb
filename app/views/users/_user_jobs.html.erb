@@ -1,0 +1,36 @@
+<tr>
+  <td><b>Job Name</b></td>
+  <td><b>Last Run</b></td>
+  <td><b>Outcome</b></td>
+  <td><b>Results</b></td>
+</tr>
+<% unless @jobs.empty? %>
+<% @jobs.each do |job| %>
+<tr>
+  <td class="job">
+    <span class="jobname"><%= link_to job.name, job_path(job) %></span>
+  </td>
+  <td class="job">
+    <span class="lastrun">
+      Created at <%= time_ago_in_words(job.created_at) unless job.created_at.nil? %> ago.
+    </span>
+  </td>
+
+  <% user = job.user rescue User.find(job.user_id) %>
+  <% if current_user?(job.user) or current_user.admin? %>
+    <td class="job">
+      <%= link_to "edit", edit_job_path(job), :title => "Edit #{job.name}" %>
+    </td>
+    <td class="job">
+        <%= link_to "delete", job, :method => :delete,
+                                               :confirm => "You sure?",
+                                               :title => "Delete #{job.name}" %>
+    </td>
+    <td class="job">
+      <%= link_to "run job", job_path(:job_id => job), :method => :run,
+                                                       :title => "Run #{job.name}" %>
+    </td>
+    <% end %>
+</tr>
+<% end %>
+<% end %>

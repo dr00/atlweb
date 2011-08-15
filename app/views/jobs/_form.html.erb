@@ -20,8 +20,12 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :program %><br />
-    <%= f.text_field :program %>
+    <%= f.label :program_path  %><br />
+    <%= f.text_field :program_path %>
+  </div>
+  <div class="field">
+    <%= f.label :command %><br />
+    <%= f.text_field :command %>
   </div>
   <div class="field">
     <%= f.label :args %><br />
@@ -31,13 +35,13 @@
     <%= f.label :file_map %><br />
     <%= f.text_field :file_map %>
   </div>
+	<div class="field">
+    <%= f.label :sensor_map %><br />
+    <%= f.text_field :sensor_map %>
+  </div>
   <div class="field">
     <%= f.label :sensor_server %><br />
     <%= f.text_field :sensor_server %>
-  </div>
-  <div class="field">
-    <%= f.label :sensor_map %><br />
-    <%= f.text_field :sensor_map %>
   </div>
   <div class="field">
     <%= f.label :gui_url %><br />

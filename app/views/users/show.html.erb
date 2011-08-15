@@ -2,19 +2,17 @@
   <tr>
     <td class="main">
       <h1>
-        <%= @user.user_name %>
+        <%= @user.username %>'s jobs.
       </h1>
-      <% unless @user.jobs.empty? %>
-        <table class = "jobs" summary="User Jobs">
-          <%= render @jobs %>
-        </table>
-        <%= will_paginate @jobs %>
+      <% unless @jobs.empty? %>
+      <table class = "jobs" summary="User Jobs">
+        <%= render 'user_jobs' %>
+      </table>
+      <%= will_paginate @jobs %>
       <% end %>
     </td>
     <td class = "sidebar round">
-      <strong>Name</strong> <%= @user.user_name %><br />
-      <strong>URL</strong> <%= link_to user_path(@user), @user %><br />
-      <strong>Jobs</strong> <%= @user.jobs.count %>
+      <%= render 'user_sidebar' %>
     </td>
   </tr>
 </table>

@@ -2,35 +2,43 @@
 #
 # Table name: jobs
 #
-#  id            :integer         not null, primary key
-#  name          :string(255)     not null
-#  description   :text
-#  sensor_server :string(255)     default("hercules")
-#  gui_url       :string(255)     default("www.dslab.uwb.edu")
-#  sensor_map    :string(255)
-#  result_id     :integer
-#  user_id       :integer
-#  last_run_date :datetime
-#  program       :string(255)     not null
-#  args          :string(255)
-#  file_map      :string(255)
-#  last_outcome  :string(255)
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id               :integer         not null, primary key
+#  name             :string(255)     not null
+#  description      :text
+#  command          :string(255)     not null
+#  args             :string(255)
+#  program_path :string(255)     not null
+#  filemap          :string(255)
+#  last_outcome     :string(255)
+#  sensor_server    :string(255)     default("hercules")
+#  gui_url          :string(255)     default("www.dslab.uwb.edu")
+#  sensor_map_path  :string(255)     not null
+#  user_id          :integer
+#  created_at       :datetime
+#  updated_at       :datetime
 #
 
 class Job < ActiveRecord::Base
-  attr_accessible :name, :description, :sensor_server, :gui_url, :sensor_map, :program, :args, :file_map
+  before_save :update_program_path
+  attr_accessible :name, :description, :command, :args, :program_path, :file_map, :sensor_server, :sensor_map, :gui_url
 
   belongs_to :user
 
   validates :name, :presence => true, :uniqueness => true
-  validates :program, :presence => true
+  validates :command, :presence => true
   validates :file_map, :presence => true
+	validates :program_path, :presence => true
   validates :gui_url, :presence => true
   validates :sensor_map, :presence => true
   validates :sensor_server, :presence => true
 
-  default_scope :order => 'jobs.last_run_at DESC'
+  default_scope :order => 'jobs.name'
 
+  private
+
+  def update_program_path
+    filename = File.basename(program_path)
+    user = User.find_by_id(params[:user_id])
+    self[:program_path] = "#{user.home_dir}/#{id}/#{filename}"
+  end
 end
