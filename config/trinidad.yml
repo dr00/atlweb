@@ -1,0 +1,10 @@
+port: 80
+environment: production
+jruby_min_runtimes: 1 # min number of runtimes
+jruby_max_runtimes: 1 # max number of runtimes
+public: public
+daemon: # example, daemon extension
+  pid_file: /var/run
+  log:
+    file: trinidad.log
+    level: ALL

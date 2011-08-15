@@ -30,6 +30,8 @@ platforms :jruby do
     gem 'jruby-openssl'
     gem 'jruby-rack'
     gem 'warbler'
+    gem 'trinidad'
+    gem 'trinidad_daemon_extension'
   #else
   #end
 
